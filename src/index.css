@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary-green: #0b5b46;
+  --color-primary-green-dark: #064d3b;
+  --color-primary-green-light: #e6f4ee;
+  --color-accent-mint: #dcfce7;
+  --color-text-dark: #111827;
+  --color-text-body: #64748b;
+  --color-text-muted: #94a3b8;
+  --color-bg-white: #ffffff;
+  --color-bg-soft: #fafaf8;
+  --color-border-light: #e5e7eb;
+  --color-border-subtle: #f1f5f9;
+
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --shadow-card: 0 10px 30px rgba(17, 24, 39, 0.05);
+  --shadow-hover: 0 18px 36px rgba(11, 91, 70, 0.1);
+  --shadow-hero: 0 25px 50px -12px rgba(6, 77, 59, 0.22);
+
+  --animate-fade-in: fadeIn 0.25s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-text-dark);
+    background-color: var(--color-bg-white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body.modal-open {
+    overflow: hidden;
+  }
+
+  /* Custom base elements & helpers matching original design */
+  a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s ease;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+}
+
+/* Custom container 1400px constraint */
+.app-container {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    padding: 0 20px;
+  }
+}
+
+/* Custom indicator line for active links & tabs */
+.active-nav-link-indicator::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-primary-green);
+  border-radius: 2px;
+}
+
+.active-tab-indicator::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-primary-green);
+}
+
+/* Custom leaf bullet for recipe details */
+.recipe-ingredient-item::before {
+  content: "🌿";
+  position: absolute;
+  left: 0;
+  top: 1px;
+  font-size: 0.78rem;
+}
